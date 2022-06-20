@@ -1,9 +1,17 @@
-import axios from "axios";
+import axios from "axios"; // fetching api data
 import { useState, useEffect } from "react";
 
 function App() {
-  const [commits, setCommits] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const [commits, setCommits] = useState([]); // storing array of github commit objects
+  const [errors, setErrors] = useState([]); // storing errors from api request
+
+  /**
+   * getCommitsRecursively():
+   * - recursive function that goes through all commits
+   * - takes in an array of commit objects and saves them in state
+   * @param {object[]} commits
+   * @param {number} index
+   */
   const getCommitsRecursively = (commits, index = 0) => {
     if (commits[index + 1]) {
       getCommitsRecursively(commits, index + 1);
@@ -14,6 +22,12 @@ function App() {
       });
     }
   };
+
+  /**
+   * useEffect()
+   * - gets called once, like componentDidMount()
+   * - makes the api request using axios
+   */
   useEffect(() => {
     axios({
       method: "get",
@@ -29,7 +43,6 @@ function App() {
         }
       })
       .catch((error) => {
-        console.log(error);
         setErrors((prevState) => {
           return [
             ...prevState,
