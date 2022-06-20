@@ -1,5 +1,7 @@
 import axios from "axios"; // fetching api data
 import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import Commit from "./components/Commit";
 
 function App() {
   const [commits, setCommits] = useState([]); // storing array of github commit objects
@@ -52,7 +54,11 @@ function App() {
       });
   }, []);
 
-  return <h1></h1>;
+  return (
+    <main>
+      <Header numberOfCommits={commits.length} />
+    </main>
+  );
 }
 
 export default App;
