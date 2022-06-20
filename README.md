@@ -1,15 +1,13 @@
 # crossroads-group
 
-Take-Home Project
+## Instructions
 
-## Project Instructions
+## Assignment
 
-<h1>Crossroads-Group</h1>
-<h3>Take-Home Project<h3>
+<h2>Crossroads-Group</h2>
+<h4>Take-Home Project<h4>
 
-<hr />
-
-<h2>Objective</h2>
+<h3>Objective</h3>
 
 <p>
 The goal of this project will be to create a web application that shows git commit history for the project you’re working on (looks a lot like recursion, huh?). You need to make many well-stated commits while working on this project and regularly push them up.
@@ -21,9 +19,7 @@ You will need to sign up for a free GitHub account if you do not already have on
 You can use the Angular, Vue, or React framework. We are currently looking for candidates that know Angular or TypeScript.
 </p>
 
-<hr />
-
-<h2>Requirements</h2>
+<h3>Requirements</h3>
 
 <p>
 You must use the GitHub API - while you could make a scraper or devise another method to get the git commit history of your project, we would like to see how you work with an existing API.
