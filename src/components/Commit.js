@@ -3,6 +3,7 @@ import "../css/commit.css";
 import ReactMarkdown from "react-markdown";
 
 const Commit = ({ data, commitNumber }) => {
+  console.log("COMMIT");
   const date = new Date(data.commit.author.date);
   const timeStamp = date.toLocaleString("en-US", {
     timeZone: "America/Los_Angeles",
