@@ -1,10 +1,13 @@
+// IMPORTS
+import ReactMarkdown from "react-markdown"; // used for styling
+// CSS
 import "../css/commit.css";
 
-import ReactMarkdown from "react-markdown";
-
+// Component displays a card with commit message and info
 const Commit = ({ data, commitNumber }) => {
-  console.log("COMMIT");
+  // creating a date object using the commit timestamp
   const date = new Date(data.commit.author.date);
+  // converting date and time to PST with formating to shorten time and date
   const timeStamp = date.toLocaleString("en-US", {
     timeZone: "America/Los_Angeles",
     dateStyle: "short",

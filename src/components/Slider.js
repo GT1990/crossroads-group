@@ -1,10 +1,14 @@
-import { useRef } from "react";
-
+// CSS
 import "../css/slider.css";
 
+// Slider component uses and html range input element to slide through the commit cards
 const Slider = ({ numberOfCommits, changeCommit }) => {
-  console.log("SLIDER RENDERING");
-  const sliderRef = useRef();
+  /**
+   * Takes the input element to grab its value
+   * Then uses the changeCommit function, passed in as a prop, to change parent state.
+   * The parent state contains the index of the commit that will be displayed
+   * @param {element} e
+   */
   const handleSliderChange = (e) => {
     console.log(e.target.value);
     const value = e.target.value;
@@ -21,7 +25,6 @@ const Slider = ({ numberOfCommits, changeCommit }) => {
         defaultValue={numberOfCommits}
         step="1"
         className="slider_input"
-        ref={sliderRef}
         onChange={(e) => handleSliderChange(e)}
       />
     </div>

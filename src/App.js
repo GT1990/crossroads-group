@@ -1,14 +1,16 @@
-import axios from "axios"; // fetching api data
 import { useState, useEffect } from "react";
+import axios from "axios"; // fetching api data
+// Components
 import Header from "./components/Header";
 import Commit from "./components/Commit";
 import Loading from "./components/Loading";
 import Slider from "./components/Slider";
-
+// CSS
 import "./css/app.css";
 
+// fetches data from github rest api
+// then displays 4 components (Loading, Header, Commit, and Slider)
 function App() {
-  console.log("APP");
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState([]); // storing errors from api request
 
@@ -39,6 +41,14 @@ function App() {
    * - makes the api request using axios
    */
   useEffect(() => {
+    /**
+     * axios
+     * - using axios instead of fetch to make api get request
+     * - axios returns a promise
+     * - then and catch handle my resolved or rejected promise
+     * - if response data has status code of 200-OK then the data is passed to the
+     *   getCommitsRecursively function
+     */
     axios({
       method: "get",
       url: "https://api.github.com/repos/gt1990/crossroads-group/commits",
@@ -80,9 +90,13 @@ function App() {
 
   return (
     <main id="main">
-      {loading ? <Loading /> : <Header numberOfCommits={data.length} />}
-      {!loading && data.length ? (
+      {errors.length ? (
+        errors[0]
+      ) : loading ? (
+        <Loading />
+      ) : data.length ? (
         <>
+          <Header numberOfCommits={data.length} />
           <Commit
             data={data[currentCommitIndex]}
             commitNumber={currentCommitIndex}
