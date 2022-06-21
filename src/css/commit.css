@@ -1,7 +1,7 @@
 .card {
   margin: 30px auto;
   width: 30%;
-  height: 300px;
+  height: 60vh;
   padding: 25px;
   border-radius: 40px;
   box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
@@ -10,6 +10,14 @@
   transition: 0.4s;
   overflow: hidden;
   position: relative;
+  background-image: url("https://img.wallpapersafari.com/tablet/2560/1700/8/7/JyhpCY.jpg");
+  background-position: center;
+  background-size: cover;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 .card:hover {
   transform: scale(0.9, 0.9);
@@ -18,9 +26,7 @@
 }
 
 .card .commit_number {
-  text-align: center;
-  position: absolute;
-  bottom: 20px;
+  top: 10px;
   left: calc(50% - 50px);
   width: 100px;
   font-family: sans-serif;
@@ -28,9 +34,23 @@
   font-size: 50px;
 }
 
+.card .commit_message {
+  line-height: 1em;
+  font-size: 1.1em;
+  color: white;
+}
+.card .details {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  line-height: 1.5em;
+  font-size: 1em;
+}
 .card .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   overflow: hidden;
+  margin-right: 10px;
 }
