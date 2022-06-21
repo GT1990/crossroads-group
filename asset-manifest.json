@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/crossroads-group/static/css/main.d724f53a.css",
+    "main.js": "/crossroads-group/static/js/main.99aa3355.js",
+    "index.html": "/crossroads-group/index.html",
+    "main.d724f53a.css.map": "/crossroads-group/static/css/main.d724f53a.css.map",
+    "main.99aa3355.js.map": "/crossroads-group/static/js/main.99aa3355.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d724f53a.css",
+    "static/js/main.99aa3355.js"
+  ]
+}
