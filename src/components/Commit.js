@@ -1,26 +1,30 @@
 import "../css/commit.css";
 
+import ReactMarkdown from "react-markdown";
+
 const Commit = ({ data, commitNumber }) => {
   const date = new Date(data.commit.author.date);
   const timeStamp = date.toLocaleString("en-US", {
     timeZone: "America/Los_Angeles",
-    timeZoneName: "short",
+    dateStyle: "short",
+    timeStyle: "short",
   });
-  console.log("Date: ", date, timeStamp);
   return (
     <div className="card">
-      {data.commit.message}
+      <span className="commit_number">#{commitNumber}</span>
+      <div className="commit_message">
+        <ReactMarkdown>{data.commit.message}</ReactMarkdown>
+      </div>
       <div className="details">
-        {console.log(data)}
         <img
           className="avatar"
           src={data.author.avatar_url}
           alt="Author's Avatar"
         />
         {data.author.login}
-        {}
+        <br />
+        {timeStamp}
       </div>
-      <span className="commit_number">#{commitNumber}</span>
     </div>
   );
 };
