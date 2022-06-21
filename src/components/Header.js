@@ -1,5 +1,5 @@
 const Header = ({ numberOfCommits }) => {
-  return <div>Total commits for this project: {numberOfCommits}</div>;
+  return <h1>GitHub Commits for this Project</h1>;
 };
 
 export default Header;
