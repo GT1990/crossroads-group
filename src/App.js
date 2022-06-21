@@ -2,25 +2,33 @@ import axios from "axios"; // fetching api data
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Commit from "./components/Commit";
+import Loading from "./components/Loading";
+import Slider from "./components/Slider";
+
+import "./css/app.css";
 
 function App() {
-  const [commits, setCommits] = useState([]); // storing array of github commit objects
+  console.log("APP");
+  const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState([]); // storing errors from api request
+
+  const [data, setData] = useState([]); // storing array of github commit objects
+  const [currentCommitIndex, setCurrentCommitIndex] = useState(0);
 
   /**
    * getCommitsRecursively():
    * - recursive function that goes through all commits
    * - takes in an array of commit objects and saves them in state
-   * @param {object[]} commits
+   * @param {object[]} commitsData
    * @param {number} index
    */
-  const getCommitsRecursively = (commits, index = 0) => {
-    if (commits[index + 1]) {
-      getCommitsRecursively(commits, index + 1);
+  const getCommitsRecursively = (commitsData, index = 0) => {
+    if (commitsData[index + 1]) {
+      getCommitsRecursively(commitsData, index + 1);
     }
-    if (commits[index]) {
-      setCommits((prevState) => {
-        return [...prevState, commits[index].commit];
+    if (commitsData[index]) {
+      setData((prevState) => {
+        return [...prevState, commitsData[index]];
       });
     }
   };
@@ -54,9 +62,37 @@ function App() {
       });
   }, []);
 
+  /**
+   * useEffect()
+   * - gets called when the commits state changes
+   * - this triggers the loading state to become false
+   * - and sets the currentCommitIndex to the last index in the commits array
+   */
+  useEffect(() => {
+    if (data.length) {
+      setCurrentCommitIndex(data.length - 1);
+      // using setTimeout just to show the loading spinner for a second
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
+  }, [data]);
+
   return (
-    <main>
-      <Header numberOfCommits={commits.length} />
+    <main id="main">
+      {loading ? <Loading /> : <Header numberOfCommits={data.length} />}
+      {!loading && data.length ? (
+        <>
+          <Commit
+            data={data[currentCommitIndex]}
+            commitNumber={currentCommitIndex}
+          />
+          <Slider
+            numberOfCommits={data.length}
+            changeCommit={setCurrentCommitIndex}
+          />
+        </>
+      ) : null}
     </main>
   );
 }
