@@ -2,6 +2,17 @@
 
 ## Instructions
 
+To run on your local machine:
+
+1. Download files from github repo
+2. Run "npm install" to install all project dependiences
+3. Run "npm start" to run project in browser
+4. Project should now be running on http://localhost:3000/
+
+To view live demo online:
+
+- Checkout https://gt1990.github.io/crossroads-group/
+
 ## Assignment
 
 <h4>Crossroads-Group</h4>
